@@ -14,6 +14,3 @@ elif zn == '/':
     print(delenie(a,b))
 else:
     print('Введены неверные значения!')
-доп. файл: def summa(a, b):
-    '''возвращает сумму двух чисел'''
-    return (a+b)
