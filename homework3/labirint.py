@@ -1,4 +1,5 @@
 import random
+import copy
 from items import make_item
 
 class Room:
@@ -32,6 +33,7 @@ room_types = ['empty', 'chest', 'monster', 'trap', 'portal']
 loot = [
     ('Золото', 'treasure', {'amount': 50}),
     ('Зелье здоровья', 'potion', {'heal': 30}),
+    ('Зелье маны', 'mana_potion', {'mana': 10}),
     ('Меч', 'weapon', {'damage': 10}),
     ('Щит', 'armor', {'block': 5}),
     ('Свиток', 'scroll', {}),
@@ -78,7 +80,7 @@ def generate_labirint(n, m):
                     chosen = random.sample(loot, count)
                     items = []
                     for name, tp, props in chosen:
-                        items.append(make_item(name, tp, dict(props)))
+                        items.append(make_item(name, tp, copy.deepcopy(props)))
                     labirint[i][j].items = items
     
     return labirint, visited
